@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 var x = [3]float64{1,2,3}
-func main() {
+func mainHello() {
 	nestedMaps()
 	// coolMap()
 	// goodMap()
