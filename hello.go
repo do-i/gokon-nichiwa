@@ -4,19 +4,73 @@ import "fmt"
 
 var x = [3]float64{1,2,3}
 func main() {
-	mainForLoopNoIndex() 
-	mainForLoopFuncy()
-	mainArray() 
-	mainSwitch()
-	mainForLoopOdd()
-	mainForLoop()
-	mainForLoopFunny()
-	mainStdIn() 
-	mainVariablesAndConstants() 
+	coolMap()
+	// goodMap()
+	// slices()
+	// mainForLoopNoIndex() 
+	// mainForLoopFuncy()
+	// mainArray() 
+	// mainSwitch()
+	// mainForLoopOdd()
+	// mainForLoop()
+	// mainForLoopFunny()
+	// mainStdIn() 
+	// mainVariablesAndConstants() 
 } 
 
+func coolMap() {
+	elements := map[string]string {
+		"H": "Hydrogen",
+		"He": "Helium",
+		"Li": "Lithium",
+		"Be": "Beryllium",
+		"B": "Boron",
+		"C": "Carbon",
+		"N": "Nitrogen",
+		"O": "Oxygen",
+		"F": "Fluorine",
+		"Ne": "Neon",
+	}
+	fmt.Println(elements)
+}
+
+func goodMap() {
+	// make instanciates map type
+	mmm := make(map[string]int)
+	mmm["one"] = 1
+	mmm["two"] = 2
+	fmt.Println(mmm)
+	delete(mmm, "two")
+	fmt.Println(mmm)
+}
+
+func badMap() {
+	// Runtime Error: panic: assignment to entry in nil map
+	var mmm map[string]int
+	mmm["one"] = 1
+	mmm["two"] = 2
+	fmt.Println(mmm)	
+}
+
 func slices() {
-	
+	// use make keyword to create Slices
+	x := make([]float64, 5, 10)
+	for i, val := range x {
+		fmt.Printf("[%d]=%.2f\n",i, val)
+	}
+
+	// use [low:high]
+	array := []int{1,2,3,4,5}
+	tinySlice := array[1:3] // low inclusive, high exclusive
+	fmt.Println(tinySlice)
+	fmt.Println(len(tinySlice))
+
+	// append
+	biggerSlice := tinySlice[:]
+	for i := 0; i < 100; i++ {
+		biggerSlice = append(biggerSlice, i)
+	}
+	fmt.Println(len(biggerSlice))
 }
 
 func mainForLoopNoIndex() {
