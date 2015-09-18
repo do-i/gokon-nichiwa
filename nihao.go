@@ -5,14 +5,6 @@ import (
 	"strconv"
 	)
 
-func main() {
-	bunchOfNum := []float64{5, 7, 10}
-	fmt.Printf("%.2f\n", average(bunchOfNum))
-	mainHello()
-	multiReturnMain()
-	nameReturnTypeMain()
-	variadicMain()
-}
 // input parameter within parenthisis. return type followed
 func average(xs []float64) float64 {
 	total := 0.0
@@ -27,7 +19,7 @@ func nameReturnTypeMain() {
 	fmt.Println(nameReturnType())
 }
 func nameReturnType() (result string) {
-	// variable result is already declared in the method signature 
+	// variable result is already declared in the method signature
 	// so you cannot do result := "yoyo!" so just assign a value.
 	result = "done!"
 	return
@@ -57,9 +49,49 @@ func variadic(x int, names ... string) string {
 	return result
 }
 
-// 7.4 Closure ... ref. page 88 
+// 7.4 Closure ... ref. page 88
 // create function within a function then access local var
 // Java calls annonymous class
+func closureMain() {
+	counter := closure()
+	for i := 0; i < 5; i++ {
+		fmt.Println(counter(i))
+	}
+}
+func closure() func(increment int) int {
+	count := 0
+	return func(increment int) int {
+		count += increment
+		return count
+	}
+}
 
 // 7.5 Recursion
+func recursionMain() {
+	fmt.Printf("5! = %d\n", recursion(5))
+	fmt.Printf("4! = %d\n", recursion(4))
+	fmt.Printf("0! = %d\n", recursion(0))
+	// Runtime error : fmt.Printf("-1! = %d\n", recursion(-1))
+}
+func recursion(n int) int {
+	if n < 0 {
+		panic("invalid input " + strconv.Itoa(n))
+	}
+	if n == 0 {
+		return 1
+	}
+	return recursion(n-1) * n;
+}
+
+func main() {
+	bunchOfNum := []float64{5, 7, 10}
+	fmt.Printf("%.2f\n", average(bunchOfNum))
+	mainHello()
+	multiReturnMain()
+	nameReturnTypeMain()
+	variadicMain()
+	closureMain()
+	recursionMain()
+}
+
 
