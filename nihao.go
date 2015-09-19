@@ -83,7 +83,7 @@ func recursion(n int) int {
 	return recursion(n-1) * n;
 }
 
-func main() {
+func mainNihao() {
 	bunchOfNum := []float64{5, 7, 10}
 	fmt.Printf("%.2f\n", average(bunchOfNum))
 	mainHello()
