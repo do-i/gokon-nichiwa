@@ -50,7 +50,7 @@ func swapIntegersMain() {
 	fmt.Printf("After swap  : x=%d, y=%d\n", x, y)
 }
 
-func main() {
+func mainHachi() {
 	whatsDaPointMain()
 	anotherPoint()
 	swapIntegersMain()
