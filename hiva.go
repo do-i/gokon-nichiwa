@@ -111,7 +111,7 @@ func interfacesMain() {
 	}
 }
 
-func main() {
+func mainHiva() {
 	mainHello()
 	mainNihao()
 	mainHachi()
