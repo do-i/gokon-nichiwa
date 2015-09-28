@@ -27,8 +27,6 @@ func mainGoroutine() {
 	fmt.Scanln(&input)
 }
 
-
-
 // ch 10.2
 // Channels:- provide a way for two goroutines to commu-nicate with one another and synchronize their execu-tion.
 // channel direction explicitly specify chan<- as consumer, <-chan as producer.
@@ -94,16 +92,37 @@ func selectMain() {
 			}
 		}
 	}()
-
 	fmt.Scanln(new(string))
 }
 
 // Buffered Channels (async)
+// blocking happens only if spaces are empty or full
+func bufferedChannels() {
+	// create async channel with 5 spaces
+	chenAsync := make(chan int, 5)
+	go func() {
+		for count := 1; ;count++ {
+			chenAsync <- count
+			fmt.Println("Producer " + strconv.Itoa(count))
+			time.Sleep(time.Second * 1)
+		}
+	}()
+
+	go func() {
+		for {
+			data := <- chenAsync
+			fmt.Println("Consumer " + strconv.Itoa(data))
+			time.Sleep(time.Second * 2)
+		}
+	}()
+	fmt.Scanln(new(string))
+}
 
 
 func main() {
 	// mainHiva()
 	// mainGoroutine()
 	// channelsMain()
-	selectMain()
+	// selectMain()
+	bufferedChannels()
 }
