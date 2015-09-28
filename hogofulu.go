@@ -97,7 +97,7 @@ func selectMain() {
 
 // Buffered Channels (async)
 // blocking happens only if spaces are empty or full
-func bufferedChannels() {
+func BufferedChannels() {
 	// create async channel with 5 spaces
 	chenAsync := make(chan int, 5)
 	go func() {
@@ -124,5 +124,5 @@ func main() {
 	// mainGoroutine()
 	// channelsMain()
 	// selectMain()
-	bufferedChannels()
+	BufferedChannels()
 }
