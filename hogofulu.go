@@ -66,9 +66,44 @@ func channelsMain() {
 	fmt.Scanln(&input)
 }
 
+// select statement
+func selectMain() {
+	c1 := make(chan string)
+	c2 := make(chan string)
+
+	go func() {
+		for {
+			c1 <- "from one 11111111111"
+			time.Sleep(time.Second * 2)
+		}
+	}()
+	go func() {
+		for {
+			c2 <- "from two 222222222222"
+			time.Sleep(time.Second * 3)
+		}
+	}()
+	go func() {
+		for {
+			// all case gets executed synchronously
+			select {
+			case msg1 := <- c1:
+				fmt.Println(msg1)
+			case msg2 := <- c2:
+				fmt.Println(msg2)
+			}
+		}
+	}()
+
+	fmt.Scanln(new(string))
+}
+
+// Buffered Channels (async)
+
 
 func main() {
-	mainHiva()
-	mainGoroutine()
-	channelsMain()
+	// mainHiva()
+	// mainGoroutine()
+	// channelsMain()
+	selectMain()
 }
